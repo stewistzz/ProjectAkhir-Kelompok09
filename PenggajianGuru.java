@@ -6,8 +6,8 @@ public class PenggajianGuru {
         Scanner penggajian = new Scanner(System.in);
 
         // variabel input
-        String NamaGuru, Jabatan;
-        int NIP, Lama_mengajar, TingkatPendidikan;
+        String NamaGuru, Jabatan, TingkatPendidikan="" ;
+        int NIP, Lama_mengajar;
         long Gaji_pokok_1 = 10000000, Gaji_pokok_2 =4000000, total1=0, total2=0, tunjangan1, tunjangan2;
         
         // Isi variable
@@ -22,17 +22,22 @@ public class PenggajianGuru {
         Jabatan = penggajian.next();
         System.out.print("Masukkan lama mengajar: ");
         Lama_mengajar = penggajian.nextInt();
-        System.out.println();
+        // System.out.println();h
         // if condition tingkat pendidikan guru
-        System.out.print("Masukkan tingkat pendidikan = ");
-        TingkatPendidikan = penggajian.nextInt();
+        // nextLine()
+        penggajian.nextLine();
+        System.out.print("Masukkan tingkat pendidikan (ex. S1/S2) = ");
+        TingkatPendidikan += penggajian.nextLine();
+        // System.out.println("jabatanmyu"+TingkatPendidikan);
 
-        if (TingkatPendidikan > 1) {
-            System.out.println("Tingkat pendidikan = S2");
+        if (TingkatPendidikan.equals("S2")) {
+            System.out.println("Tingkat pendidikan = " + TingkatPendidikan);
             System.out.println("Dengan gaji pokok = " + Gaji_pokok_1);
-        } else {
-            System.out.println("Tingkat pendidikan = S1 ");
+        } else  if (TingkatPendidikan.equals("S1")){
+            System.out.println("Tingkat pendidikan = " + TingkatPendidikan);
             System.out.println("Dengan gaji pokok = " + Gaji_pokok_2);
+        } else {
+            System.out.println("Undifined");
         }
 
         // tunjangan dari lama mengajar
