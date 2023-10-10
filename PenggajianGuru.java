@@ -12,7 +12,8 @@ public class PenggajianGuru {
         
         // Isi variable
         // Gaji_pokok_1 = 10000000;
-        // Gaji_pokok_2 = 4000000;                               
+        // Gaji_pokok_2 = 4000000;  
+        //hapus variabel                             
 
         System.out.print("Masukkan nama guru: ");
         NamaGuru = penggajian.next();
