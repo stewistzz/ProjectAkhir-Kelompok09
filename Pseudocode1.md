@@ -25,3 +25,5 @@ Deskripsi :
 17. Print Lama-mengajar
 18. Print "total"
 19. Print total
+20. Print "selesai"
+21. Print selesai
