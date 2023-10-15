@@ -8,7 +8,7 @@ public class PenggajianGuru {
         // variabel input
         String NamaGuru, Jabatan, TingkatPendidikan="" ;
         int NIP, Lama_mengajar;
-        long Gaji_pokok_1 = 10000000, Gaji_pokok_2 =4000000, total1=0, total2=0, tunjangan1, tunjangan2;
+        long Gaji_pokok_1 = 10000000, Gaji_pokok_2 =4000000, total=0, tunjangan1, tunjangan2;
         
         // Isi variable
         // Gaji_pokok_1 = 10000000;
@@ -41,18 +41,19 @@ public class PenggajianGuru {
             System.out.println("Undifined");
         }
 
-        // tunjangan dari lama mengajar
+        // tunjangan dari lama mengajar dalam bulan/tahun
+        
         if (Lama_mengajar >= 60) {
             tunjangan1 = 4000000;
             System.out.println("Tunjangan anda adalah = " + tunjangan1);
-            total1 = Gaji_pokok_1 * Lama_mengajar;
-            System.out.println("Gaji anda adalah = " + total1);
+            total = Gaji_pokok_1 * Lama_mengajar + tunjangan1 * Lama_mengajar;
+            System.out.println("Gaji anda adalah = " + total);
 
         } else {
             tunjangan2 = 2500000;
             System.out.println("Tunjangan anda adalah = " + tunjangan2);
-            total2 = Gaji_pokok_2 * Lama_mengajar;
-            System.out.println("Gaji anda adalah = " + total2);
+            total = Gaji_pokok_2 * Lama_mengajar + tunjangan2 * Lama_mengajar;
+            System.out.println("Gaji anda adalah = " + total);
 
         }
         // System.out.println((int)total1);
@@ -66,8 +67,8 @@ public class PenggajianGuru {
         System.out.println("NIP: " + NIP);
         System.out.println("Jabatan: " + Jabatan);
         System.out.println("Lama Mengajar: " + Lama_mengajar + " Bulan");
-        System.out.println("Total Gaji: Rp " + total1);
-        System.out.println("Total Gaji = " + total2);
+        
+        System.out.println("Total Gaji = " + total);
         System.out.println(
                 "Gunakan Gaji Anda Dengan Penuh Manfaat \nKarena Hasil Kerja Kerasmu Tidak Pantas Untuk Di Sia-Siakan");
         System.out.println("selesai proses");
