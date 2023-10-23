@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SistemPenggajianBaru",
+            "request": "launch",
+            "mainClass": "SistemPenggajianBaru",
+            "projectName": "ProjectAkhir-Kelompok09_55fd2364"
+        },
+        {
+            "type": "java",
+            "name": "PenggajianGuru",
+            "request": "launch",
+            "mainClass": "PenggajianGuru",
+            "projectName": "ProjectAkhir-Kelompok09_55fd2364"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
