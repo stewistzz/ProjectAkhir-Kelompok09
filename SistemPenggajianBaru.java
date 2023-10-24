@@ -5,11 +5,11 @@ public class SistemPenggajianBaru {
         
         Scanner inputUser = new Scanner(System.in);
 
-        System.out.println("------------------------");
-        System.out.println("Program Penggajian Guru");
-        System.out.println("------------------------");
+        System.out.println("---------------------------");
+        System.out.println("| Program Penggajian Guru |");
+        System.out.println("---------------------------");
 
-        String namaGuru, status, golongan = "";
+        String namaGuru, status, golongan = "",pendidikan,S2, S1, jawaban, kehadiran, sakit, izin, alpha;
         double tunjangan = 0, tarifPerJam = 0, gaji, totalGaji;
         int jumlahJam, tarif = 0, NIP;
 
@@ -18,16 +18,54 @@ public class SistemPenggajianBaru {
         namaGuru = inputUser.nextLine();
         System.out.print("Masukkan NIP : ");
         NIP = inputUser.nextInt();
+
+        // cek pendidikan terakhir dari guru tersebut
+        System.out.print("Pendidikan terakhir guru(S1/S2) : ");
+        pendidikan = inputUser.next();
+        if (pendidikan.equalsIgnoreCase("S2")) {
+            System.out.println(namaGuru + " sebelumnya menempuh pendidikan S2");
+        } else {
+            System.out.println(namaGuru + " sebelumnya menempuh pendidikan S1");
+            
+        }
+
+
+
+        // cek apakah guru tersebut masih aktif mengajar atau tidak
+        System.out.print("Apakah Guru tersebut masih aktif mengajar? (ya/tidak) : ");
+        jawaban = inputUser.next();
+
+        if(jawaban.equalsIgnoreCase("ya")){
+            System.out.println(namaGuru + " masih aktif mengajar");
+            System.out.print("Masukkan kehadiran guru hari ini : ");
+            kehadiran = inputUser.next();
+            if(kehadiran.equalsIgnoreCase("hadir")) {
+                System.out.println(namaGuru + " saat ini hadir");
+            } else if(kehadiran.equalsIgnoreCase("izin")){
+                System.out.println(namaGuru + " sedang berhalangan hadir karena izin");
+            } else if(kehadiran.equalsIgnoreCase("Sakit")) {
+                System.out.println(namaGuru + " sedang berhalangan hadir karena sakit");
+            } else if(kehadiran.equalsIgnoreCase("Alpha")) {
+                System.out.println(namaGuru + " Tidak masuk tanpa keterangan(alpha)");
+            } else {
+                System.out.println("Guru Sudah tidak aktif");
+            }
+        } else {
+            System.out.println(namaGuru + " Sudah tidak aktif mengajar");
+        }
+
+
+        
         inputUser.nextLine();
 
         System.out.print("Masukkan Status PNS/HONORER? : ");
         status = inputUser.nextLine();
        
         // Proses status guru
-        if (status.equals("PNS")) {
+        if (status.equalsIgnoreCase("PNS")) {
             System.out.print("Masukkan golongan guru, contoh : I, II, III, IV = ");
             golongan = inputUser.nextLine();
-        } else if (status.equals("HONORER")){
+        } else if (status.equalsIgnoreCase("HONORER")){
             System.out.print("Masukkan tarif mengajar perjamnnya = ");
             tarifPerJam = inputUser.nextInt();
         }else {

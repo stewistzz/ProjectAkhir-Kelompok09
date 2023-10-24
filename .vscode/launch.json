@@ -9,6 +9,13 @@
             "name": "SistemPenggajianBaru",
             "request": "launch",
             "mainClass": "SistemPenggajianBaru",
+            "projectName": "ProjectAkhir-Kelompok09_2640ee38"
+        },
+        {
+            "type": "java",
+            "name": "SistemPenggajianBaru",
+            "request": "launch",
+            "mainClass": "SistemPenggajianBaru",
             "projectName": "ProjectAkhir-Kelompok09_55fd2364"
         },
         {
