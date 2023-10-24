@@ -96,7 +96,7 @@ public class SistemPenggajianBaru {
                     System.out.println("Tarif perjam honorer " + tarif);
                     break;
             }
-        gaji = jumlahJam * tarifPerJam;
+        gaji = jumlahJam * 7 * tarifPerJam;
         System.out.println("Perhitungan Gaji Guru = " + gaji + " Rupiah");
         
 
