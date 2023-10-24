@@ -9,7 +9,11 @@
             "name": "SistemPenggajianBaru",
             "request": "launch",
             "mainClass": "SistemPenggajianBaru",
+<<<<<<< HEAD
             "projectName": "ProjectAkhir-Kelompok09_2640ee38"
+=======
+            "projectName": "ProjectAkhir-Kelompok09_7ccb6b3b"
+>>>>>>> 9c8ca28e90b33c0c9cebbc102f18d8d5b889457e
         },
         {
             "type": "java",
