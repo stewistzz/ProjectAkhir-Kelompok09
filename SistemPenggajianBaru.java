@@ -10,7 +10,7 @@ public class SistemPenggajianBaru {
         System.out.println("---------------------------");
 
         String namaGuru, status, golongan = "",pendidikan,S2, S1, jawaban, kehadiran, sakit, izin, alpha;
-        double tunjangan = 0, tarifPerJam = 0, gaji, totalGaji;
+        double tunjangan = 0, tarifPerJam = 0, gaji, totalGaji, pajak, potonganPajak = 0;
         int jumlahJam, tarif = 0, NIP;
 
         // masukkan informasi dari guru
@@ -121,6 +121,26 @@ public class SistemPenggajianBaru {
         }
         totalGaji = gaji + tunjangan;
         System.out.println("Perhitungan Total Gaji Guru = " + totalGaji + " Rupiah");
+        
+        if (golongan.equalsIgnoreCase("I")) {
+            potonganPajak = totalGaji * 0.01;
+            System.out.println(potonganPajak);
+        } else if (golongan.equalsIgnoreCase("II")) {
+            potonganPajak = totalGaji * 0.02;
+            System.out.println(potonganPajak);
+        } else if (golongan.equalsIgnoreCase("III")) {
+            potonganPajak = totalGaji * 0.03;
+            System.out.println(potonganPajak);
+        } else if (golongan.equalsIgnoreCase("IV")) {
+            potonganPajak = totalGaji * 0.04;
+            System.out.println(potonganPajak);
+        }else {
+            potonganPajak = totalGaji * 0.005;
+            System.out.println(potonganPajak);
+        }
+
+        double slipGaji = totalGaji - potonganPajak;
+        
 
 
         // Data yang di print
@@ -133,6 +153,8 @@ public class SistemPenggajianBaru {
         System.out.println("| Golongan    | " + golongan + " |");
         System.out.println("| Gaji Guru   | " + gaji + " |");
         System.out.println("| Total Gaji  | " + totalGaji + " |");
+        System.out.println("Potongan pajak | " + potonganPajak + " |");
+        System.out.println("Total slip gaji  | " + slipGaji + " |");
         System.out.println("------------------------");
         
         
