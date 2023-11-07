@@ -24,62 +24,73 @@ public class SistemPenggajianBaru {
             namaGuru = inputUser.next();
             System.out.print("Masukkan NIP : ");
             NIP = inputUser.nextInt();
-
-            // cek pendidikan terakhir dari guru tersebut
-            System.out.print("Pendidikan terakhir guru : \n1. S1\n2. S2 \n jawaban anda : ");
-            pendidikan = inputUser.nextInt();
             
-                if (pendidikan==1) {
-                    System.out.println(namaGuru + " sebelumnya menempuh pendidikan S1");
-                }
-                else if(pendidikan==2) {
-                    System.out.println(namaGuru + " sebelumnya menempuh pendidikan S2");
-                } else {
-                    System.out.println(namaGuru + " Tidak menenmpuh pendidikan sarjana");
-                    
-                }
+            do {
+                // cek pendidikan terakhir dari guru tersebut
+                System.out.print("Pendidikan terakhir guru : \n1. S1\n2. S2 \n jawaban anda : ");
+                pendidikan = inputUser.nextInt();
+                
+                    if (pendidikan==1) {
+                        System.out.println(namaGuru + " sebelumnya menempuh pendidikan S1");
+                    }
+                    else if(pendidikan==2) {
+                        System.out.println(namaGuru + " sebelumnya menempuh pendidikan S2");
+                    } else {
+                        System.out.println(namaGuru + " Tidak menenmpuh pendidikan sarjana");
+                        
+                    }
+            } while (pendidikan != 1 && pendidikan != 2);
+            
 
-            // cek apakah guru tersebut masih aktif mengajar atau tidak
-            System.out.print("Apakah Guru tersebut masih aktif mengajar? (ya/tidak) : ");
-            jawaban = inputUser.next();
+            do {
+                // cek apakah guru tersebut masih aktif mengajar atau tidak
+                System.out.print("Apakah Guru tersebut masih aktif mengajar? (ya/tidak) : ");
+                jawaban = inputUser.next();
 
-            if(jawaban.equalsIgnoreCase("ya")){
-                System.out.println(namaGuru + " masih aktif mengajar");
-                System.out.print("Masukkan kehadiran guru hari ini : \n1. hadir\n2. izin \n3. sakit \n4. alpha \n jawaban anda : ");
-                kehadiran = inputUser.nextInt();
-                if(kehadiran==1) {
-                    System.out.println(namaGuru + " saat ini hadir");
-                } else if(kehadiran==2){
-                    System.out.println(namaGuru + " sedang berhalangan hadir karena izin");
-                } else if(kehadiran==3) {
-                    System.out.println(namaGuru + " sedang berhalangan hadir karena sakit");
-                } else if(kehadiran==4) {
-                    System.out.println(namaGuru + " Tidak masuk tanpa keterangan(alpha)");
-                } else {
-                    System.out.println("Guru Sudah tidak aktif");
-                }
-            } else {
-                System.out.println(namaGuru + " Sudah tidak aktif mengajar");
-            }
+                do {
+                    if(jawaban.equalsIgnoreCase("ya")){
+                        System.out.println(namaGuru + " masih aktif mengajar");
+                        System.out.print("Masukkan kehadiran guru hari ini : \n1. hadir\n2. izin \n3. sakit \n4. alpha \n jawaban anda : ");
+                        kehadiran = inputUser.nextInt();
+                        if(kehadiran==1) {
+                            System.out.println(namaGuru + " saat ini hadir");
+                        } else if(kehadiran==2){
+                            System.out.println(namaGuru + " sedang berhalangan hadir karena izin");
+                        } else if(kehadiran==3) {
+                            System.out.println(namaGuru + " sedang berhalangan hadir karena sakit");
+                        } else if(kehadiran==4) {
+                            System.out.println(namaGuru + " Tidak masuk tanpa keterangan(alpha)");
+                        } else {
+                            System.out.println("Guru Sudah tidak aktif");
+                        }
+                    } else {
+                        System.out.println(namaGuru + " Sudah tidak aktif mengajar");
+                    }
+                } while (kehadiran < 1 || kehadiran >4);
+
+            } while (!jawaban.equalsIgnoreCase("ya") && !jawaban.equalsIgnoreCase("tidak"));
 
 
             
             inputUser.nextLine();
 
-            System.out.print("Masukkan Status PNS/HONORER? : ");
-            status = inputUser.nextLine();
-        
-            // Proses status guru
-            if (status.equalsIgnoreCase("PNS")) {
-                System.out.print("Masukkan golongan guru, contoh : \n1. I \n2. II \n3. III \n4. IV \n jawaban anda = ");
-                golongan = inputUser.nextInt();
-            } else if (status.equalsIgnoreCase("HONORER")){
-                System.out.print("Masukkan tarif mengajar perjamnnya = ");
-                tarifPerJam = inputUser.nextInt();
-            }else {
-                System.out.println("Status yang anda masukkan tidak valid");
-                return;
-            }
+            do {
+                System.out.print("Masukkan Status PNS/HONORER? : ");
+                status = inputUser.nextLine();
+                    
+                    // Proses status guru
+                    if (status.equalsIgnoreCase("PNS")) {
+                        System.out.print("Masukkan golongan guru, contoh : \n1. I \n2. II \n3. III \n4. IV \n jawaban anda = ");
+                        golongan = inputUser.nextInt();
+                    } else if (status.equalsIgnoreCase("HONORER")){
+                        System.out.print("Masukkan tarif mengajar perjamnnya = ");
+                        tarifPerJam = inputUser.nextInt();
+                    }else {
+                        System.out.println("Status yang anda masukkan tidak valid");
+                        return;
+                    }
+                
+            } while (!status.equalsIgnoreCase("pns") && !status.equalsIgnoreCase("honorer"));
 
             // jumlah jam mengajar
             System.out.print("Masukkan jumlah jam mengajar(per jam kali 7 hari) = ");
@@ -155,7 +166,7 @@ public class SistemPenggajianBaru {
             System.out.println("| Nama Guru      | " + namaGuru );
             System.out.println("| NIP GUru       | " + NIP );
             System.out.println("| Status Guru    | " + status );
-            System.out.println("| Status guru     | " + jawaban );
+            System.out.println("| Status guru    | " + jawaban );
             System.out.println("| Golongan       | " + golongan );
             System.out.println("| Gaji Guru      | " + gaji );
             System.out.println("| Total Gaji     | " + totalGaji );
