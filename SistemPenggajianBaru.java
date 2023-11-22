@@ -197,6 +197,7 @@ public class SistemPenggajianBaru {
                        System.out.println("| Total Gaji     | " + totalGaji    +"|");
                        System.out.println("| Potongan pajak | " + potonganPajak +"|");
                        System.out.println("| Total slip gaji| " + slipGaji     +"|");
+                       System.out.println("haloo semuanya");
                        System.out.println("------------------------");
                    //}
                 break;
