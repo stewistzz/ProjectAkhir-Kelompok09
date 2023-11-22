@@ -66,7 +66,7 @@ public class SistemPenggajianBaru {
                                     System.out.println(namaGuru + " Tidak menenmpuh pendidikan sarjana");
                                     
                                 }
-                        } while (pendidikan != 1 && pendidikan != 2);
+                        } while (pendidikan == 1 && pendidikan == 2);
                         
 
                         do {
@@ -95,12 +95,10 @@ public class SistemPenggajianBaru {
                                 }
                             } while (kehadiran < 1 || kehadiran >4);
 
-                        } while (!jawaban.equalsIgnoreCase("ya") && !jawaban.equalsIgnoreCase("tidak"));
+                        } while (jawaban.equalsIgnoreCase("ya") && jawaban.equalsIgnoreCase("tidak"));
 
 
-                        
                         inputUser.nextLine();
-
                         do {
                             System.out.print("Masukkan Status PNS/HONORER? : ");
                             status = inputUser.nextLine();
@@ -116,8 +114,7 @@ public class SistemPenggajianBaru {
                                     System.out.println("Status yang anda masukkan tidak valid");
                                     return;
                                 }
-                            
-                        } while (!status.equalsIgnoreCase("pns") && !status.equalsIgnoreCase("honorer"));
+                        } while (status.equalsIgnoreCase("pns") && status.equalsIgnoreCase("honorer"));
 
                         // jumlah jam mengajar
                         System.out.print("Masukkan jumlah jam mengajar(per jam kali 7 hari) = ");
