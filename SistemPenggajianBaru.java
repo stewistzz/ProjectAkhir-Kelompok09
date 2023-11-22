@@ -15,10 +15,10 @@ public class SistemPenggajianBaru {
         int jumlahJam, tarif = 0, NIP, pendidikan, kehadiran=0, golongan=0, jumlahGuru, tarifHonorer;
 
         String[][] dataGuru= {
-            { "Dimas", "S1", "234234234", "PNS", "Golongan IV", "6 jam perminggu" },
-            {"Daffa", "S1","123123123", "PNS", "Golongan III"},
-            {"Agus", "S1","345345345", "PNS", "Golongan I"},
-            {"prime", "S1", "456456456", "Honorer"}
+            { "Dimas\t", "S1\t", "234234234\t", "PNS\t\t", "Golongan IV\t", "6 jam perminggu" },
+            {"Daffa\t", "S1\t","123123123\t", "PNS\t\t", "Golongan II\t", "6 jam perminggu"},
+            {"Agus\t", "S1\t","345345345\t", "PNS\t\t", "Golongan I\t", "5 jam perminggu"},
+            {"prime\t", "S1\t", "456456456\t", "Honorer\t\t\t", "5 jam perminggu"}
         };
 
         // array nama guru
