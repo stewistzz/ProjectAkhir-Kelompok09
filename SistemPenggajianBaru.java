@@ -25,13 +25,16 @@ public class SistemPenggajianBaru {
         while (true) {
             System.out.println("Daftar menu : ");
             System.out.println("1. Menu Daftar Data Guru");
-            System.out.println("2. Menu input dan output penggajian");
-            System.out.println("3. Menu exit");
-            System.out.print("Masukkan menu yang ingin dipilih(1,2,3) : ");
+            System.out.println("2. Menu jadwal penggajian guru");
+            System.out.println("3. Menu input dan output penggajian");
+            System.out.println("4. Menu daftar guru yang sudah dan belum digaji");
+            System.out.println("5. Menu exit");
+            System.out.print("Masukkan menu yang ingin dipilih(1,2,3,..) : ");
             int pilihan = inputUser.nextInt();
             System.out.println();
 
             switch (pilihan) {
+                // MENU MENAMPILKAN DATA GURU
                 case 1:
                     // Menampilkan array dataGuru
                     for (String[] guru : dataGuru) {
@@ -42,7 +45,13 @@ public class SistemPenggajianBaru {
                     }
                 break;
 
-                case 2 : 
+                // MENNU UNTUK PENJADWALAN GAJI GURU
+                case 2:
+
+                break;
+
+                // MENU INPUT DAN OUTPUT PENGGAJIAN
+                case 3 : 
                     // System.out.print("Masukkan jumlah guru mengajar : ");
                     // jumlahGuru = inputUser.nextInt();
                     //perulangan 
@@ -182,29 +191,35 @@ public class SistemPenggajianBaru {
                         }
                         slipGaji = totalGaji - potonganPajak;
                         // Data yang di print
-                       System.out.println("-------------------------------");
-                       System.out.println("| Data         |  Detail Guru |");
-                       System.out.println("-------------------------------");
-                       System.out.println("| Nama Guru      | " + namaGuru     +"|");
-                       System.out.println("| NIP GUru       | " + NIP          +"|");
-                       System.out.println("| Status Guru    | " + status       +"|");
-                       System.out.println("| Status guru    | " + jawaban      +"|");
+                       System.out.println("=========================================================");
+                       System.out.println("| \t\tData   \t\t|  \tDetail Guru \t|");
+                       System.out.println("=========================================================");
+                       System.out.println("| \tNama Guru   \t\t|\t" + namaGuru +"\t\t|");
+                       System.out.println("| \tNIP GUru   \t\t|\t" + NIP +"\t|");
+                       System.out.println("| \tStatus Guru   \t\t|\t" + status +"\t\t|");
+                       System.out.println("| \tStatus guru   \t\t|\t" + jawaban +"\t\t|");
 
                        if (status.equalsIgnoreCase("pns")) {
-                           System.out.println("| Golongan       | " + golongan +"|");
+                           System.out.println("| \tGolongan   \t\t|\t" + golongan +"\t\t|");
                        }
-                       System.out.println("| Gaji Guru      | " + gaji         +"|");
-                       System.out.println("| Total Gaji     | " + totalGaji    +"|");
-                       System.out.println("| Potongan pajak | " + potonganPajak +"|");
-                       System.out.println("| Total slip gaji| " + slipGaji     +"|");
-                       System.out.println("haloo semuanya");
-                       System.out.println("------------------------");
+                       System.out.println("| \tGaji Guru   \t\t|\t" + gaji +"\t|");
+                       System.out.println("| \tTotal Gaji   \t\t|\t" + totalGaji    +"\t|");
+                       System.out.println("| \tPotongan pajak   \t|\t" + potonganPajak +"\t|");
+                       System.out.println("| \tTotal slip gaji   \t|\t" + slipGaji     +"\t|");
+                       System.out.println("=========================================================");
                    //}
                 break;
-                case 3:
+
+                // menu untuk menampilkan guru yang sudah dan belum digaji
+                case 4 :
+
+                break;
+
+                case 5:
                    //menu exit
                    System.out.println("Termikasih kami ucapkan!!!");
-                   System.exit(0);;
+                   System.exit(0);
+                   System.out.println();
 
                 break;
 
@@ -214,12 +229,14 @@ public class SistemPenggajianBaru {
             }
             // jika baris dan kolom kursi tidak tersedia maka kembali ke daftar menu
             System.out.println();
-            System.out.println("kembali lagi ke daftar menu? (y/n) : ");
+            System.out.print("kembali lagi ke daftar menu? (y/n) : ");
             String next = inputUser.next();
             System.out.println();
         
              if (next.equalsIgnoreCase("n")) {
-             break;
+                 System.out.println("Termikasih kami ucapkan!!!");
+                 System.out.println();
+                 break;
             }
         }
     }
