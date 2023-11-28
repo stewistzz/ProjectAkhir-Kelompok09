@@ -21,6 +21,8 @@ public class SistemPenggajianBaru {
             {"prime\t", "S1\t", "456456456\t", "Honorer\t\t\t", "5 jam perminggu"}
         };
 
+        String[][] jadwalGaji = new String[dataGuru.length][2]; // Array untuk menyimpan jadwal penggajian guru
+
         // array nama guru
         while (true) {
             System.out.println("Daftar menu : ");
@@ -47,6 +49,22 @@ public class SistemPenggajianBaru {
 
                 // MENNU UNTUK PENJADWALAN GAJI GURU
                 case 2:
+                    System.out.println("Jadwal Penggajian Guru : ");
+                    for (int i = 0; i < dataGuru.length; i++) {
+                        System.out.println((i + 1) + ". " + dataGuru[i][0] + " - " + jadwalGaji[i][1]);
+                    }
+
+                    System.out.print("Pilih guru untuk dijadwalkan penggajiannya (nomor): ");
+                    int nomorGuru = inputUser.nextInt() - 1;
+                    inputUser.nextLine();
+
+                    System.out.print("Masukkan tanggal penggajian (format: DD-MM-YYYY): ");
+                    String tanggalPenggajian = inputUser.nextLine();
+
+                    jadwalGaji[nomorGuru][0] = dataGuru[nomorGuru][2];
+                    jadwalGaji[nomorGuru][1] = tanggalPenggajian;
+
+                    System.out.println("Jadwal penggajian untuk guru " + dataGuru[nomorGuru][0] +"telah dijadwalkan pada tanggal " + tanggalPenggajian);
 
                 break;
 
