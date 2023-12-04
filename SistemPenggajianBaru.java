@@ -22,7 +22,7 @@ public class SistemPenggajianBaru {
         };
 
         String[][] jadwalGaji = new String[dataGuru.length][2]; // Array untuk menyimpan jadwal penggajian guru
-
+        String[][] sudahbelum = new String[dataGuru.length][2]; // Array untuk menyimpan data guru yang sudah digaji dan belum digaji
         // array nama guru
         while (true) {
             System.out.println("Daftar menu : ");
@@ -228,8 +228,24 @@ public class SistemPenggajianBaru {
                    //}
                 break;
 
-                // menu untuk menampilkan guru yang sudah dan belum digaji
+                // menu untuk menandai guru mana yang sudah di gaji dan belum di gaji 
                 case 4 :
+                                    System.out.println("Daftar Penggajian Guru : ");
+                    for (int i = 0; i < dataGuru.length; i++) {
+                        System.out.println((i + 1) + ". " + dataGuru[i][0] + " - " + sudahbelum[i][1]);
+                    }
+
+                    System.out.print("Pilih guru untuk penanda sudah atau belum digaji (nomor): ");
+                    int noguru = inputUser.nextInt() - 1;
+                    inputUser.nextLine();
+
+                    System.out.print("Masukkan format (sudah digaji)");
+                    String penanda = inputUser.nextLine();
+
+                    sudahbelum[noguru][0] = dataGuru[noguru][2];
+                    sudahbelum[noguru][1] = penanda;
+
+                    System.out.println("Guru " + dataGuru[noguru][0] + penanda);
 
                 break;
 
