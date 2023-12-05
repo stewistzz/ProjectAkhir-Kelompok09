@@ -11,14 +11,15 @@ public class SistemPenggajianBaru {
         System.out.println("---------------------------");
 
         String status, jawaban, namaGuru;
-        double tunjangan = 0, tarifPerJam = 0, gaji, totalGaji, pajak, potonganPajak = 0, slipGaji;
-        int jumlahJam, tarif = 0, NIP, pendidikan, kehadiran=0, golongan=0, jumlahGuru, tarifHonorer;
+        double tunjangan = 0, tarifPerJam = 0, gaji, totalGaji, pajak, potonganPajak = 0, slipGaji, hitungAbsen = 0;
+        int jumlahJam, tarif = 0, NIP, pendidikan, kehadiran=0, golongan=0, jumlahGuru, tarifHonorer, jmlHariAbsen = 0;
 
         String[][] dataGuru= {
             { "Dimas\t", "S1\t", "234234234\t", "PNS\t\t", "Golongan IV\t", "6 jam perminggu" },
             {"Daffa\t", "S1\t","123123123\t", "PNS\t\t", "Golongan II\t", "6 jam perminggu"},
             {"Agus\t", "S1\t","345345345\t", "PNS\t\t", "Golongan I\t", "5 jam perminggu"},
-            {"prime\t", "S1\t", "456456456\t", "Honorer\t\t\t", "5 jam perminggu"}
+            {"prime\t", "S1\t", "456456456\t", "Honorer\t\t\t", "5 jam perminggu"},
+            {"Adiona\t S1\t 678678678\t Honorer\t\t\t 6 jam perminggu"}
         };
 
         String[][] jadwalGaji = new String[dataGuru.length][2]; // Array untuk menyimpan jadwal penggajian guru
@@ -98,32 +99,41 @@ public class SistemPenggajianBaru {
 
                         do {
                             // cek apakah guru tersebut masih aktif mengajar atau tidak
-                            System.out.print("Apakah Guru tersebut masih aktif mengajar? (ya/tidak) : ");
+                            System.out.print("Apakah Guru tersebut masih aktif mengajar? (aktif/non-aktif) : ");
                             jawaban = inputUser.next();
-
+    
                             do {
-                                if(jawaban.equalsIgnoreCase("ya")){
+                                if(jawaban.equalsIgnoreCase("aktif")){ // kondisi jika guru yang diinput masuk daftar dan masih aktif mengajar
                                     System.out.println(namaGuru + " masih aktif mengajar");
                                     System.out.print("Masukkan kehadiran guru hari ini : \n1. hadir\n2. izin \n3. sakit \n4. alpha \n jawaban anda : ");
                                     kehadiran = inputUser.nextInt();
-                                    if(kehadiran==1) {
-                                        System.out.println(namaGuru + " saat ini hadir");
-                                    } else if(kehadiran==2){
-                                        System.out.println(namaGuru + " sedang berhalangan hadir karena izin");
-                                    } else if(kehadiran==3) {
-                                        System.out.println(namaGuru + " sedang berhalangan hadir karena sakit");
-                                    } else if(kehadiran==4) {
-                                        System.out.println(namaGuru + " Tidak masuk tanpa keterangan(alpha)");
-                                    } else {
-                                        System.out.println("Guru Sudah tidak aktif");
-                                    }
-                                } else {
+                                    do { // perulangan untuk memasukkan kembali kehadiran guru selama proses mengajar
+                                        if(kehadiran==1) {
+                                            System.out.println(namaGuru + " saat ini hadir");
+                                        } else if(kehadiran==2){
+                                            System.out.println(namaGuru + " sedang berhalangan hadir karena izin");
+                                        } else if(kehadiran==3) {
+                                            System.out.println(namaGuru + " sedang berhalangan hadir karena sakit");
+                                        } else if(kehadiran==4) {
+                                            System.out.println(namaGuru + " Tidak masuk tanpa keterangan(alpha)");
+                                        } else {
+                                            System.out.println("Kehadiran guru tidak dapat diketahui");
+                                        }
+                                    } while (false);
+                                } else if (jawaban.equalsIgnoreCase("non-aktif")) { // kondisi untuk cut system jika guru tidak aktif
                                     System.out.println(namaGuru + " Sudah tidak aktif mengajar");
+                                    System.exit(0);
+                                } else {
+                                    System.out.println("Status guru tidak diketahui!!");
                                 }
+    
+                               //jika kehadiran != 1, maka tanyakan berapa hari?,kemudian tambah hari ketidkahadiran untuk guru tersebut kedalam jmlHariAbsen
+    
                             } while (kehadiran < 1 || kehadiran >4);
-
-                        } while (jawaban.equalsIgnoreCase("ya") && jawaban.equalsIgnoreCase("tidak"));
-
+                            System.out.println();
+    
+                        } while (!jawaban.equalsIgnoreCase("aktif") && !jawaban.equalsIgnoreCase("non-aktif"));
+    
 
                         inputUser.nextLine();
                         do {
@@ -166,8 +176,18 @@ public class SistemPenggajianBaru {
                                     System.out.println("Tarif perjam honorer " + tarif);
                                     break;
                             }
-                        gaji = jumlahJam * 4 * tarifPerJam;
-                        System.out.println("Perhitungan Gaji Guru = " + gaji + " Rupiah");
+
+                            // Mempertimbangkan gaji guru dengan kehadiran guru, dengan mengurangi biaya gaji yang dikalikan banyak hari tidakmasuk
+                        if (status.equalsIgnoreCase("pns")) {
+                            System.out.print("Berapa lama guru " + namaGuru + " tidak masuk mengajar (Selain absesni hadir maka dapat ditambahkan)? ");
+                            jmlHariAbsen = inputUser.nextInt();
+                            System.out.println("guru tidak hadir selama " + jmlHariAbsen + " kali");
+
+                            hitungAbsen = jmlHariAbsen * tarifPerJam;
+                        }
+
+                        gaji = jumlahJam * 4 * tarifPerJam - hitungAbsen;
+                        System.out.println("Perhitungan Gaji Guru \t\t\t = " + gaji + " Rupiah");
 
                         // mengatur tunjangan sesuai dengan golongan
                         switch (golongan) {
