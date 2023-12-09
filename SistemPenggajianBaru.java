@@ -15,14 +15,14 @@ public class SistemPenggajianBaru {
         int jumlahJam, tarif = 0, NIP, pendidikan, kehadiran=0, golongan=0, jumlahGuru, tarifHonorer, jmlHariAbsen = 0;
 
         String[][] dataGuru= {
-            { "Dimas\t S1\t 234234234\t PNS\t\t Golongan IV\t 6 jam perminggu" },
-            {"Daffa\t S1\t 123123123\t PNS\t\t Golongan II\t 6 jam perminggu"},
-            {"Agus\t S1\t 345345345\t PNS\t\t Golongan I\t 5 jam perminggu"},
-            {"prime\t S1\t 456456456\t Honorer\t\t\t 5 jam perminggu"},
-            {"Adiona\t S1\t 678678678\t Honorer\t\t\t 6 jam perminggu"},
-            {"Windah\t S2\t 890890890\t PNS\t\t Golongan III\t 5 jam perminggu"},
-            {"Luthfi\t S2\t 901901901\t PNS\t\t Golongan II\t 4 jam perminggu"},
-            {"Manca\t S1\t 111222333\t Honorer\t\t\t 6jam perminggu"}
+            { "Dimas\t", "S1\t", "234234234\t", "PNS\t\t", "Golongan IV\t", "6 jam perminggu" },
+            {"Daffa\t", "S1\t", "123123123\t", "PNS\t\t", "Golongan II\t", "6 jam perminggu"},
+            {"Agus\t", "S1\t", "345345345\t", "PNS\t\t", "Golongan I\t", "5 jam perminggu"},
+            {"prime\t", "S1\t", "456456456\t", "Honorer\t\t\t", "5 jam perminggu"},
+            {"Adiona\t", "S1\t", "678678678\t", "Honorer\t\t\t", "6 jam perminggu"},
+            {"Windah\t", "S2\t", "890890890\t", "PNS\t\t", "Golongan III\t", "5 jam perminggu"},
+            {"Luthfi\t", "S2\t", "901901901\t", "PNS\t\t", "Golongan II\t", "4 jam perminggu"},
+            {"Manca\t", "S1\t", "111222333\t", "Honorer\t\t\t", "6jam perminggu"}
         };
 
         String[][] jadwalGaji = new String[dataGuru.length][2]; // Array untuk menyimpan jadwal penggajian guru
@@ -253,7 +253,7 @@ public class SistemPenggajianBaru {
 
                 // menu untuk menandai guru mana yang sudah di gaji dan belum di gaji 
                 case 4 :
-                                    System.out.println("Daftar Penggajian Guru : ");
+                    System.out.println("Daftar Penggajian Guru : ");
                     for (int i = 0; i < dataGuru.length; i++) {
                         System.out.println((i + 1) + ". " + dataGuru[i][0] + " - " + sudahbelum[i][1]);
                     }
