@@ -10,9 +10,9 @@ public class ISistemGajiGuruDinamis {
         System.out.println("| Program Penggajian Guru |");
         System.out.println("---------------------------");
 
-        String status, jawaban, namaGuru;
-        double tunjangan = 0, tarifPerJam = 0, gaji, totalGaji, pajak, potonganPajak = 0, slipGaji, hitungAbsen = 0;
-        int jumlahJam, tarif = 0, NIP, pendidikan, kehadiran = 0, golongan = 0, jumlahGuru, tarifHonorer,
+        String status, jawaban, namaGuru, NIP;
+        double tunjangan = 0, tarifPerJam = 0, gaji, totalGaji, potonganPajak = 0, slipGaji, hitungAbsen = 0;
+        int jumlahJam, tarif = 0, pendidikan, kehadiran = 0, golongan = 0, tarifHonorer,
                 jmlHariAbsen = 0, barsiGuru = 0, kolomGuru = 0;
 
         System.out.print("Jumlah Baris Data\t: ");
@@ -114,24 +114,12 @@ public class ISistemGajiGuruDinamis {
 
                         System.out.print("Masukkan Nama Guru : ");
                         namaGuru = inputUser.next();
+                        
 
                         // // kondisi jika nama guru tidak sesuai dengan yang ada pada dataGuru
-                        // for (int i = 0; i < dataGuru.length; i++) {
-                        // for (int j = 0; j < dataGuru[i].length; j++) {
-                        // if (j == 0) {
-                        // if (!dataGuru[i][j].equalsIgnoreCase(namaGuru)) {
-                        // System.out.println("Peringatan!!! \n data guru yang anda inputkan tidak
-                        // sesuai dengan data yang ada!!");
-                        // continue;
-                        // }
-                        // }
-
-                        // }
-                        // System.out.println();
-                        // }
 
                         boolean isNamaGuruValid = false;
-
+                        
                         // kondisi jika nama guru tidak sesuai dengan yang ada pada dataGuru
                         for (int i = 0; i < dataGuru.length; i++) {
                             if (dataGuru[i][0].equalsIgnoreCase(namaGuru)) {
@@ -143,13 +131,33 @@ public class ISistemGajiGuruDinamis {
                         if (!isNamaGuruValid) {
                             System.out.println(
                                     "Peringatan!!! \n data guru yang anda inputkan tidak sesuai dengan data yang ada!!");
+                            System.out.println();
                         } else {
                             break;
                         }
-
+                       
                     }
-                    System.out.print("Masukkan NIP : ");
-                    NIP = inputUser.nextInt();
+
+                    while (true) {
+                        System.out.print("Masukkan NIP : ");
+                        NIP = inputUser.next();
+
+                        boolean nipGuru = false;
+
+                        for (int i = 0; i < dataGuru.length; i++) {
+                            if  (dataGuru[i][2].equals(NIP)) {
+                                nipGuru = true;
+                                break;
+                            }
+
+                        }
+                         if (!nipGuru) {
+                            System.out.println("Peringatan, NIP yang anda masukkan tidak terdaftar");
+                        } else {
+                            break;
+                        }
+                    }
+                    
 
                     do {
                         // cek pendidikan terakhir dari guru tersebut
