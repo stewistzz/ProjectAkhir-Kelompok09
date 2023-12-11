@@ -2,6 +2,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class ISistemGajiGuruDinamis {
+
+    static void jumlahBarisArray() {
+        
+    }
+
     public static void main(String[] args) {
 
         Scanner inputUser = new Scanner(System.in);
