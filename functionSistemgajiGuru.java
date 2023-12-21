@@ -5,14 +5,29 @@ public class functionSistemgajiGuru {
 
     static String[][] dataGuru;
     static String status, jawaban, namaGuru, NIP;
-    static double tunjangan = 0, tarifPerJam = 0, gaji, totalGaji, potonganPajak = 0, slipGaji, hitungAbsen = 0;
-    static int jumlahJam, tarif = 0, pendidikan, kehadiran = 0, golongan = 0, jmlHariAbsen = 0, barisGuru = 0,
-            kolomGuru = 0;
+    static String[][] jadwalGaji = new String[10][10];
+    static String[][] sudahbelum = new String[10][10];
+    
+    static double tunjangan = 0, 
+    tarifPerJam = 0, 
+    gaji, 
+    totalGaji, 
+    potonganPajak = 0, 
+    slipGaji, 
+    hitungAbsen = 0;
+    
+    static int jumlahJam, tarif = 0, 
+    pendidikan, 
+    kehadiran = 0, 
+    golongan = 0, 
+    jmlHariAbsen = 0, 
+    barisGuru = 0,
+    kolomGuru = 0;
 
 
     static void daftarDataGuru(int barsiGuru) {
         Scanner inputUser = new Scanner(System.in);
-        System.out.print("Jumlah Baris Data\t: ");
+        System.out.print("Masukkan jumlah Guru\t: ");
         barsiGuru = inputUser.nextInt();
         // System.out.print("Masukkan jumlah kolom data = ");
         // kolomGuru = inputUser.nextInt();
@@ -57,8 +72,8 @@ public class functionSistemgajiGuru {
 
     static void caseSatu(int pilihan) {
         // MENU MENAMPILKAN DATA GURU
-        System.out.println(" Nama \t Pendidikan \t NIP Guru \t StatusGuru \t Golongan \t Jumlah jam");
-        System.out.println("=========================================================================================");
+        // System.out.println(" Nama \t Pendidikan \t NIP Guru \t StatusGuru \t Golongan \t Jumlah jam");
+        // System.out.println("=========================================================================================");
         for (String[] guru : dataGuru) {
             for (String data : guru) {
                 System.out.print(data + " \t ");
@@ -67,30 +82,37 @@ public class functionSistemgajiGuru {
         }
     }
 
+    static void inputTanggalGaji() {
+        
+    }
 
     static void caseDua(int pilihan) {
         Scanner inputUser = new Scanner(System.in);
 
-        String[][] jadwalGaji = new String[dataGuru.length][2]; // Array untuk menyimpan jadwal penggajian
-                                                                // guru
+        System.out.println(jadwalGaji[0][1]);
 
-        System.out.println("Jadwal Penggajian Guru : ");
+
+        System.out.println("Jadwal Penggajian Guru : " );
         for (int i = 0; i < dataGuru.length; i++) {
             System.out.println((i + 1) + ". " + dataGuru[i][0] + "\t" + " - " + "\t" + jadwalGaji[i][1]);
+            //System.out.println(Arrays.toString(jadwalGaji));
         }
 
         System.out.print("Pilih guru untuk dijadwalkan penggajiannya (nomor): ");
         int nomorGuru = inputUser.nextInt() - 1;
         inputUser.nextLine();
 
-        System.out.print("Masukkan tanggal penggajian (format: DD-MM-YYYY): ");
-        String tanggalPenggajian = inputUser.nextLine();
+        System.out.println(nomorGuru);
 
-        jadwalGaji[nomorGuru][0] = dataGuru[nomorGuru][2];
+        System.out.print("Masukkan tanggal penggajian (format: DD-MM-YYYY): ");
+        String tanggalPenggajian = inputUser.next();
+
+        //jadwalGaji[nomorGuru][0] = dataGuru[nomorGuru][2];
         jadwalGaji[nomorGuru][1] = tanggalPenggajian;
 
         System.out.println("Jadwal penggajian untuk guru " + dataGuru[nomorGuru][0]
-                + "telah dijadwalkan pada tanggal " + tanggalPenggajian);
+                + "telah dijadwalkan pada tanggal " + jadwalGaji[0][1]);
+
     }
 
     static void caseTiga(int pilihan) {
@@ -122,13 +144,11 @@ public class functionSistemgajiGuru {
             } else {
                 break;
             }
-
         }
 
         while (true) {
             System.out.print("Masukkan NIP : ");
             NIP = inputUser.next();
-
             boolean nipGuru = false;
 
             for (int i = 0; i < dataGuru.length; i++) {
@@ -136,7 +156,6 @@ public class functionSistemgajiGuru {
                     nipGuru = true;
                     break;
                 }
-
             }
             if (!nipGuru) {
                 System.out.println("Peringatan, NIP yang anda masukkan tidak terdaftar");
@@ -296,6 +315,9 @@ public class functionSistemgajiGuru {
             System.out.println(potonganPajak);
         }
         slipGaji = totalGaji - potonganPajak;
+    }
+    
+    static void printCaseTiga() {
         // Data yang di print
         System.out.println("=========================================================");
         System.out.println("| \t\tData   \t\t|  \tDetail Guru \t|");
@@ -304,7 +326,7 @@ public class functionSistemgajiGuru {
         System.out.println("| \tNIP GUru   \t\t|\t" + NIP + "\t|");
         System.out.println("| \tStatus Guru   \t\t|\t" + status + "\t\t|");
         System.out.println("| \tStatus guru   \t\t|\t" + jawaban + "\t\t|");
-
+    
         if (status.equalsIgnoreCase("pns")) {
             System.out.println("| \tGolongan   \t\t|\t" + golongan + "\t\t|");
         }
@@ -314,21 +336,23 @@ public class functionSistemgajiGuru {
         System.out.println("| \tTotal slip gaji   \t|\t" + slipGaji + "\t|");
         System.out.println("=========================================================");
         // }
+
     }
 
     static void caseEmpat(int pilihan) {
-
         Scanner inputUser = new Scanner(System.in);
-
-        String[][] sudahbelum = new String[dataGuru.length][2]; // Array untuk menyimpan data guru yang
-                                                                // sudah digaji dan
-        // belum digaji
-
+        //String[][] sudahbelum = new String[dataGuru.length][2]; // Array untuk menyimpan data guru yang
+                                                                // sudah digaji dan belum digaji
+    //     // Inisialisasi array sudahbelum
+    // for (int i = 0; i < dataGuru.length; i++) {
+    //     sudahbelum[i][0] = dataGuru[i][0]; // Nama guru
+    //     sudahbelum[i][1] = "belum digaji"; // Status penggajian
+    // }                                
+                                
         System.out.println("Daftar Penggajian Guru : ");
         for (int i = 0; i < dataGuru.length; i++) {
             System.out.println((i + 1) + ". " + dataGuru[i][0] + " - " + sudahbelum[i][1]);
         }
-
         System.out.print("Pilih guru untuk penanda sudah atau belum digaji (nomor): ");
         int noguru = inputUser.nextInt() - 1;
         inputUser.nextLine();
@@ -340,6 +364,7 @@ public class functionSistemgajiGuru {
         sudahbelum[noguru][1] = penanda;
 
         System.out.println("Guru " + dataGuru[noguru][0] + penanda);
+        return;
     }
 
     static void caseLima(int pilihan) {
@@ -351,9 +376,6 @@ public class functionSistemgajiGuru {
 
     static void pilihanExit() {
         Scanner inputUser = new Scanner(System.in);
-
-        
-
         // jika baris dan kolom kursi tidak tersedia maka kembali ke daftar menu
             System.out.println();
             System.out.print("kembali lagi ke daftar menu? (y/n) : ");
@@ -373,53 +395,51 @@ public class functionSistemgajiGuru {
         daftarDataGuru(barisGuru);
 
         Scanner inputUser = new Scanner(System.in);
-
         System.out.println("---------------------------");
         System.out.println("| Program Penggajian Guru |");
         System.out.println("---------------------------");
-
         // array nama guru
         while (true) {
             System.out.println("Daftar menu : ");
             System.out.println("1. Menu Daftar Data Guru");
             System.out.println("2. Menu jadwal penggajian guru");
             System.out.println("3. Menu input dan output penggajian");
-            System.out.println("4. Menu daftar guru yang sudah dan belum digaji");
-            System.out.println("5. Menu exit");
+            System.out.println("4. Menu Struk penggajian");
+            System.out.println("5. Menu daftar guru yang sudah dan belum digaji");
+            System.out.println("6. Menu exit");
             System.out.print("Masukkan menu yang ingin dipilih(1,2,3,..) : ");
             int pilihan = inputUser.nextInt();
             System.out.println();
 
             switch (pilihan) {
+                // Menu untuk menampilkan data guru
                 case 1:
                     caseSatu(pilihan);
                     break;
-
                 // MENNU UNTUK PENJADWALAN GAJI GURU
                 case 2:
                     caseDua(pilihan);
                     break;
-
                 // MENU INPUT DAN OUTPUT PENGGAJIAN
                 case 3:
                     caseTiga(pilihan);
                     break;
-
                 // menu untuk menandai guru mana yang sudah di gaji dan belum di gaji
                 case 4:
-                    caseEmpat(pilihan);
-                    break;
-
+                printCaseTiga();
+                break;
                 // menu exit
                 case 5:
-                    caseLima(pilihan);
+                caseEmpat(pilihan);
+                break;
+                case 6 :
+                caseLima(pilihan);
                     break;
-
                 default:
                     System.out.println("Anda memasukkan nomor menu yang salah");
                     break;
             }
-
+            // tampilkan fungsi exit
             pilihanExit();
         }
     }

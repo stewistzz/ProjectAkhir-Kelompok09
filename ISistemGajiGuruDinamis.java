@@ -178,6 +178,8 @@ public class ISistemGajiGuruDinamis {
                         }
                     } while (pendidikan == 1 && pendidikan == 2);
 
+                    
+
                     do {
                         // cek apakah guru tersebut masih aktif mengajar atau tidak
                         System.out.print("Apakah Guru tersebut masih aktif mengajar? (aktif/non-aktif) : ");
