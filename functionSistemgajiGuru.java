@@ -200,28 +200,24 @@ public class functionSistemgajiGuru {
 
         } while (!jawaban.equalsIgnoreCase("aktif") && !jawaban.equalsIgnoreCase("non-aktif"));
 
-        inputUser.nextLine();
-        do {
-            System.out.print("Masukkan Status PNS/HONORER? : ");
-            status = inputUser.nextLine();
-
-            // Proses status guru
-            if (status.equalsIgnoreCase("PNS")) {
-                System.out.print(
-                        "Masukkan golongan guru, contoh : \n1. I \n2. II \n3. III \n4. IV \n jawaban anda = ");
-                golongan = inputUser.nextInt();
-            } else if (status.equalsIgnoreCase("HONORER")) {
-                System.out.print("Masukkan tarif mengajar perjamnnya = ");
-                tarifPerJam = inputUser.nextInt();
-            } else {
-                System.out.println("Status yang anda masukkan tidak valid");
-                return;
+            static void updateDataGuru(int pilihan) {
+                caseSatu(pilihan); // untuk menampilkan daftar data guru
+                System.out.println();
+                System.out.print("Pilih guru yang ingin diupdate datanya : ");
+                int pilihGuru = inputUser.nextInt() - 1; // user memilih guru dari daftar guru
+                System.out.println();
+        
+                System.out.print("Update golongan(PNS/Honorer) : ");
+                dataGuru[pilihGuru][3] = inputUser.next(); // update golongan
+                if (dataGuru[pilihGuru][3].equalsIgnoreCase("pns")) {
+                    System.out.print("Update GOlongan PNS : ");
+                    dataGuru[pilihGuru][4] = inputUser.next(); // update golongan pns
+                } else {
+                    dataGuru[pilihGuru][4] = "-";
+                }
+                System.out.print("Update Jam mengajar : ");
+                dataGuru[pilihGuru][5] = inputUser.next(); // update jam mengajar
             }
-        } while (status.equalsIgnoreCase("pns") && status.equalsIgnoreCase("honorer"));
-
-        // jumlah jam mengajar
-        System.out.print("Masukkan jumlah jam mengajar(per jam kali 7 hari) = ");
-        jumlahJam = inputUser.nextInt();
 
         // menghitung Gaji Guru
         switch (golongan) {
@@ -413,6 +409,10 @@ public class functionSistemgajiGuru {
                 // menu exit
                 case 5:
                     caseLima(pilihan);
+                    break;
+
+                case 6:
+                    updateDataGuru(pilihan);
                     break;
 
                 default:
