@@ -323,7 +323,7 @@ public class finalFuncntionGajiGuru {
                                                          // masih aktif mengajar
                     System.out.println(namaGuru + " masih aktif mengajar");
                     System.out.print(
-                            "Masukkan kehadiran guru hari ini : \n1. hadir\n2. izin \n3. sakit \n4. alpha \n jawaban anda : ");
+                            "Masukkan kehadiran guru hari ini (1,2,3,4) : \n1. hadir\n2. izin \n3. sakit \n4. alpha \n jawaban anda : ");
                     kehadiran = inputUser.nextInt();
                     do { // perulangan untuk memasukkan kembali kehadiran guru selama proses mengajar
                         if (kehadiran == 1) {
