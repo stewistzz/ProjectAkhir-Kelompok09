@@ -5,13 +5,13 @@ public class finalFuncntionGajiGuru {
 
     static String[][] dataGuru; // array untuk menyimpan data guru
     static String status, jawaban, namaGuru, NIP, masuk, bulan, check, pendidikan; // data string yang akan digunakan
-    static double tunjangan = 0, tarifPerJam = 0, gaji, totalGaji, potonganPajak = 0, slipGaji, hitungAbsen = 0; // data//
+    static double tunjangan = 0, tarifPerJam = 0, tarif =0, gaji, totalGaji, potonganPajak = 0, slipGaji, hitungAbsen = 0; // data//
                                                                                                                  // double//
                                                                                                                  // yang//
                                                                                                                  // akan
                                                                                                                  // //
                                                                                                                  // digunakan
-    static int jumlahJam, tarif = 0, kehadiran = 0, golongan = 0, jmlHariAbsen = 0, barisGuru = 0,
+    static int jumlahJam, kehadiran = 0, golongan = 0, jmlHariAbsen = 0, barisGuru = 0,
             kolomGuru = 0;// data int yang akan digunakan
     static Scanner inputUser = new Scanner(System.in); // scanner untuk input
 
@@ -50,18 +50,6 @@ public class finalFuncntionGajiGuru {
 
             }
         }
-
-    }
-
-    static void bahasaIndo() {
-        // ketika user memilih bahasa indonesia, maka akan tampil menu tengan tampilan
-        // bahasa indonesia
-
-    }
-
-    static void bahasaInggris() {
-        // ketika user memilih bahasa indonesia, maka akan tampil menu tengan tampilan
-        // bahasa inggris
 
     }
 
@@ -378,29 +366,13 @@ public class finalFuncntionGajiGuru {
             boolean statusGuru = false;
             // System.out.println(dataGuru[i][3]);
             // System.out.println(dataGuru[i][4]);
-            for (int i = 0; i < dataGuru.length; i++) {
-                System.out.println("/n=============");
-                for (int j = 0; j < dataGuru[i].length; j++) {
-                    System.out.println(dataGuru[i][j]);
-                }
+            // for (int i = 0; i < dataGuru.length; i++) {
+            //     System.out.println("/n=============");
+            //     for (int j = 0; j < dataGuru[i].length; j++) {
+            //         System.out.println(dataGuru[i][j]);
+            //     }
                 
-            }
-                // Proses status guru
-                // if (status.equalsIgnoreCase(dataGuru[check][3])) {
-                //     System.out.print("Masukkan status PNS, contoh : 1, 2, 3, 4\n jawaban anda = ");
-                //     golongan = inputUser.nextInt();
-                //     statusGuru = true;
-                //     //check++;
-                //     // break;
-                // } else if (status.equalsIgnoreCase(dataGuru[check][3])) { // Periksa nilai lain di sini
-                //     System.out.print("Masukkan tarif mengajar perjamnn ya = ");
-                //     tarif = inputUser.nextInt();
-                //     statusGuru = true;
-                //     //check++;
-                //     // break;
-                // } else {
-                //     System.out.println("Status guru yang anda masukkan salah!!");
-                // }
+            // }
                 if (status.equalsIgnoreCase("PNS")) {
                     System.out.print("Masukkan status PNS, contoh : 1, 2, 3, 4\n jawaban anda = ");
                     golongan = inputUser.nextInt();
@@ -408,8 +380,8 @@ public class finalFuncntionGajiGuru {
                     //check++;
                     // break;
                 } else if (status.equalsIgnoreCase("HONORER")) { // Periksa nilai lain di sini
-                    System.out.print("Masukkan tarif mengajar perjamnn ya = ");
-                    tarif = inputUser.nextInt();
+                    System.out.print("Masukkan tarif mengajar perjamnn ya : ");
+                    tarif = inputUser.nextDouble();
                     statusGuru = true;
                     //check++;
                     // break;
@@ -425,43 +397,6 @@ public class finalFuncntionGajiGuru {
                 break;
             }
         }
-
-
-
-        // while (true) {
-        //     System.out.print("Masukkan Status PNS/HONORER? : ");
-        //     status = inputUser.nextLine();
-        //     int check = 0;
-        //     int statusCount = 0; // Tambahkan counter ini
-        //     boolean statusGuru = false;
-        //     for (int i = 0; i < dataGuru.length; i++) {
-        //         String status = dataGuru[i][3];
-        //         String jam = dataGuru[i][4];
-        //         if (status.equalsIgnoreCase(status)) {
-        //             System.out.print("Masukkan status PNS, contoh : 1, 2, 3, 4\n jawaban anda = ");
-        //             golongan = inputUser.nextInt();
-        //             statusGuru = true;
-        //             statusCount++; // Tambahkan counter ini
-        //             break;
-        //         } else if (status.equalsIgnoreCase(jam)) {
-        //             System.out.print("Masukkan tarif mengajar perjamnnya = ");
-        //             tarif = inputUser.nextInt();
-        //             statusGuru = true;
-        //             statusCount++; // Tambahkan counter ini
-        //             break;
-        //         } else {
-        //             System.out.println("Status guru yang anda masukkan salah!!");
-        //         }
-        //         check++;
-        //     }
-        //     if (!statusGuru) {
-        //         System.out.println("Status yang anda masukkan tidak valid " + "(" + dataGuru[check][3] + " /" + dataGuru[check][4] + ")");
-        //         System.out.println("Status guru tidak sesuai!!");
-        //     } else {
-        //         break;
-        //     }
-        // }
-        
 
 
         // jumlah jam mengajar
@@ -492,14 +427,16 @@ public class finalFuncntionGajiGuru {
         // gaji yang dikalikan banyak hari tidakmasuk
         if (status.equalsIgnoreCase("pns")) {
             System.out.print("Berapa hari guru " + namaGuru + " tidak hadir bulan ini,"
-                    + "(Selain absesni hadir maka dapat ditambahkan) :  ");
+                    + "(Selain absensi hadir maka dapat ditambahkan) :  ");
             jmlHariAbsen = inputUser.nextInt();
             System.out.println("guru tidak hadir selama " + jmlHariAbsen + " kali");
 
             hitungAbsen = jmlHariAbsen * tarifPerJam;
+        } else if (status.equalsIgnoreCase("honorer")) {
+            hitungAbsen = 0;
         }
 
-        gaji = jumlahJam * 4 * tarifPerJam - hitungAbsen;
+        gaji =(double) jumlahJam * 4 * tarifPerJam - hitungAbsen;
         System.out.println("Perhitungan Gaji Guru \t: " + gaji + " Rupiah");
 
         // mengatur tunjangan sesuai dengan golongan
@@ -522,7 +459,7 @@ public class finalFuncntionGajiGuru {
                 break;
         }
 
-        totalGaji = gaji + tunjangan;
+        totalGaji =(double) gaji + tunjangan;
         System.out.println("Perhitungan Total Gaji Guru : " + totalGaji + " Rupiah");
 
         if (golongan == 1) {
@@ -541,7 +478,7 @@ public class finalFuncntionGajiGuru {
             potonganPajak = 0;
             System.out.println(potonganPajak);
         }
-        slipGaji = totalGaji - potonganPajak;
+        slipGaji =(double) totalGaji - potonganPajak;
 
         // store slip gaji
 
@@ -549,7 +486,7 @@ public class finalFuncntionGajiGuru {
             if (dataGuru[i][2].equals(NIP)) {
 
                 jadwalGaji[i][2] = String.valueOf(slipGaji);
-                System.out.println("guru index " + i + "\t: " + jadwalGaji[i][2]);
+                System.out.println("Slip index " + i + "\t: " + jadwalGaji[i][2]);
             }
         }
 
@@ -571,9 +508,7 @@ public class finalFuncntionGajiGuru {
             if (status.equalsIgnoreCase("pns")) {
                 System.out.println("| \tGolongan   \t\t|\t" + dataGuru[i][4] + "\t\t|");
             }
-            System.out.println("| \tGaji Guru   \t\t|\t" + gaji + "\t|");
-            System.out.println("| \tTotal Gaji   \t\t|\t" + totalGaji + "\t|");
-            System.out.println("| \tPotongan pajak   \t|\t" + potonganPajak + "\t|");
+            
             System.out.println("| \tTotal slip gaji   \t|\t" + jadwalGaji[i][2] + "\t|");
             System.out.println("=========================================================");
             // }
@@ -638,7 +573,7 @@ public class finalFuncntionGajiGuru {
         bulan = inputUser.next();
 
         System.out.println("===============================================================================");
-        System.out.println("|\tTanggal\t\t|\tSudah/Belum Gaji\t|\tPendapatan\t|");
+        System.out.println("|\tTanggal\t\t|\tNama Guru\t|\tPendapatan\t|");
         System.out.println("===============================================================================");
         for (int i = 0; i < dataGuru.length; i++) {
             // System.out.println("ini " + jadwalGaji[i][2]);
